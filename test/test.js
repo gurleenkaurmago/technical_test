@@ -1,13 +1,13 @@
 var request = require('supertest');
 var app = require('../server.js');
 const ch = require('child_process');
-describe('GET /', function() {
+describe('GET1 /', function() {
  it('respond with hello world', function(done) {
  //navigate to root and check the the response is "hello world"
  request(app).get('/').expect('Hello World', done);
  });
 });
-describe('GET /', function() { 
+describe('GET2 /', function() { 
 ch.exec('git rev-parse HEAD', function(err, stdout) {
 
 
