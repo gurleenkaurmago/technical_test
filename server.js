@@ -1,21 +1,9 @@
-
-
-
-
-
-
-//const http = require('http');
 const express = require('express');
-//const itemsRouter = require('./routes/items');
 const app = express();
-app.use(express.json()); //{id:11 name:'nitin'}
+app.use(express.json()); 
 
 const fs = require('fs');
 const ch = require('child_process');
-
-
-//app.use('/status', itemsRouter);
-
 
 
 app.get('/', function(req, res) {
@@ -29,7 +17,7 @@ app.get('/status',function(req,res){
     let rawdata = fs.readFileSync('./config/metadata.json');
     let metadata = JSON.parse(rawdata);
     
-    ch.exec('git rev-parse HEAD', function(err, stdout) {
+    ch.exec('git rev-parse HEAD', function(err, stdout) {  //child process to get last commit hash from git
         //console.log('Last commit hash on this branch is:', stdout);
         
         if(err)
@@ -38,9 +26,9 @@ app.get('/status',function(req,res){
             {
             "myapplication": [
                     {
-                "version": metadata.version,
-                "description": metadata.description,
-                "lastcommitsha": stdout
+                "version": metadata.version,     // gets version from metadata file
+                "description": metadata.description, //gets description from metadata file
+                "lastcommitsha": stdout //gets the last commit hash
                 }
             ]}
             );
