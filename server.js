@@ -26,7 +26,7 @@ app.get('/', function(req, res) {
 app.get('/status',function(req,res){
 
 
-    let rawdata = fs.readFileSync('./config/metadata.json');
+    let rawdata = fs.readFileSync('https://github.com/gurleenkaurmago/technical_test/tree/master/config/metadata.json');
     let metadata = JSON.parse(rawdata);
     
     ch.exec('git rev-parse HEAD', function(err, stdout) {
