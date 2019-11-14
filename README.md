@@ -16,6 +16,11 @@ node{
         git 'https://github.com/gurleenkaurmago/technical_test'
         
     }
+      
+     stage ('test') { 
+     sh './script/test'
+    }
+    
     
     //stage('two1') {
      //   sh 'pwd'
