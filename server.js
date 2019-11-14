@@ -26,7 +26,7 @@ app.get('/status',function(req,res){
 
     let rawdata = fs.readFileSync('./config/metadata.json');
     let metadata = JSON.parse(rawdata);
-    //console.log(metadata);
+    
 
     res.json(
         {
