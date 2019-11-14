@@ -11,6 +11,33 @@ I then created branches namely dev and test in github and checked out code in th
 
 then I created pipeline project in jenkins with the following pipeline script.
 
+node{
+    stage('pull project from github') {
+        git 'https://github.com/gurleenkaurmago/technical_test'
+        
+    }
+    
+    //stage('two1') {
+     //   sh 'pwd'
+    //}
+    stage ('build docker image') {
+        sh 'docker build -t test-image . '
+    }
+    
+    stage ('login dockerhub'){
+        sh 'docker login --username gurleenkaurmago'
+    }
+    
+    stage ('tag repo'){
+        
+    }
+    
+    stage ('push image to dockerhub'){
+        
+    }
+}
+    
+
 
 
 which automatically created a docker image and pushed the image to docker hub.
