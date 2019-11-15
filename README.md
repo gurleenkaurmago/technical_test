@@ -49,3 +49,5 @@ node{
 which automatically created a docker image and pushed the image to docker hub.
 
 pull docker image using "docker pull gurleenkaurmago/tech_test:2.0" and then run docker image on port 3000 
+
+I have installed jenkins and docker on same the server
