@@ -32,7 +32,7 @@ node{
     }
     
     stage ('login dockerhub'){
-        sh 'docker login --username gurleenkaurmago --password Vision@951@'
+        sh 'docker login --username $USERNAME --password $PASSWORD'
     }
     
     stage ('tag repo'){
