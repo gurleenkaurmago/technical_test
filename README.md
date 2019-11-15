@@ -14,35 +14,38 @@ then I created pipeline project in jenkins with the following pipeline script.
 node{
     stage('pull project from github') {
         git 'https://github.com/gurleenkaurmago/technical_test'
-        
     }
-      
-     stage ('test') { 
-     sh './script/test'
-    }
-    
     
     //stage('two1') {
      //   sh 'pwd'
     //}
+    
+    stage (' test') { 
+        
+       
+        //sh 'chmod +x ./script/test '
+        //sh './script/test' //some permission problem with mocha otherwise running fine on local machine
+    }
+    
     stage ('build docker image') {
         sh 'docker build -t test-image . '
     }
     
     stage ('login dockerhub'){
-        sh 'docker login --username gurleenkaurmago'
+        sh 'docker login --username gurleenkaurmago --password Vision@951@'
     }
     
     stage ('tag repo'){
+        sh 'docker tag test-image gurleenkaurmago/tech_test:2.0'
         
     }
     
     stage ('push image to dockerhub'){
+        sh 'docker push gurleenkaurmago/tech_test'
         
     }
 }
     
-
-
-
 which automatically created a docker image and pushed the image to docker hub.
+
+pull docker image using "docker pull gurleenkaurmago/tech_test:2.0" and then run docker image on port 3000 
